@@ -8,10 +8,11 @@ var MyProduct=React.createClass({
         this.props.products.forEach((e,i) => {
              var imgCodes=[];
             e.photos.forEach(el=>{
-                let one=React.DOM.img({src:el},);
+                let one=React.DOM.img({key:`${el}`,src:el},);
                 imgCodes.push(one);
             });
-            let info=React.DOM.div({key:e.code,className:"info"},
+            let x=e.code;
+            let info=React.DOM.div({key:x,className:"info"},
                         React.DOM.div({className:"divImg"},imgCodes),
                         React.DOM.span({className:"nameProd"},e.name),
                         React.DOM.span({className:"price"},`Цена ${e.price}`),
