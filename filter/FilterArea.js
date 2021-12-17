@@ -29,9 +29,14 @@ var FilterArea = React.createClass({
         if(this.state.isChecked){newArr.sort();}
         this.setState({filter:word,
                         sortSpisok:newArr,});
-                        console.log(this.setState());
-
-        console.log(this.state.filter);
+    },
+    reset:function(){
+     this.setState((curr)=>{
+         console.log(curr);
+         return{isChecked:false,
+            filter:"",
+            sortSpisok:this.props.spisok}
+     });
     },
     render: function () {
         let checkbox = React.DOM.input({
@@ -41,10 +46,14 @@ var FilterArea = React.createClass({
         }, null);
         let inputText = React.DOM.input({
             type: "text",
+            value:this.state.filter,
             onChange:this.filterWords,
         }, null);
+        console.log(inputText);
         let submit = React.DOM.input({
             type: "submit",
+            value:"Сброс",
+            onClick:this.reset,
         }, null);
         let opt = this.state.sortSpisok.map((v, i) => {
             return React.DOM.option({
@@ -53,7 +62,7 @@ var FilterArea = React.createClass({
             }, v);
         });
         let select = React.DOM.select({
-            size: 5
+            size: 5,
         }, opt);
         return React.DOM.div(null,
             checkbox,
