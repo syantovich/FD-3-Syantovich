@@ -11,10 +11,11 @@ var MyStore = React.createClass({
         this.setState({ClickedSelected:i});
     },
     deleteobj:function(i){
-        let newArr=this.state.sortSpisok;
-        newArr.splice(i,1);
         this.setState({delete:true,
-                        sortSpisok:newArr});
+                        sortSpisok:this.state.sortSpisok.filter((e)=>{
+                            console.log(e);
+                            return !(e.code==i);
+                        })});
     },
     render:function(){
         let spisokProducts=[];
