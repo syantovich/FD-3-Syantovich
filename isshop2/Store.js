@@ -20,7 +20,7 @@ var MyStore = React.createClass({
     render:function(){
         let spisokProducts=[];
         this.state.sortSpisok.forEach((e,i)=>{
-            let myElement=React.createElement(MyProduct,{el:e,isClicked:this.state.ClickedSelected,index:i,key:e.code,cbChoose:this.choose,cbDelete:this.deleteobj});
+            let myElement=React.createElement(MyProduct,{el:e,isClicked:this.state.ClickedSelected,key:e.code,cbChoose:this.choose,cbDelete:this.deleteobj});
             spisokProducts.push(myElement);
         });
         return React.DOM.div({
