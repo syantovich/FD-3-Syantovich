@@ -6,7 +6,7 @@ var MyProduct = React.createClass({
         };
     },
     answerChoose:function(EO){
-        this.props.cbChoose(this.props.el.code-1);
+        this.props.cbChoose(this.props.el.code);
     },
     delobj:function(EO){
         EO.stopPropagation();
@@ -19,7 +19,7 @@ var MyProduct = React.createClass({
                 imgCodes.push(one);
             });
             let x=this.props.el.code;
-            let info=React.DOM.div({key:x,className:`info ${(this.props.isClicked===this.props.el.code-1)?"chosen":""}`,onClick:this.answerChoose},
+            let info=React.DOM.div({key:x,className:`info ${(this.props.isClicked===this.props.el.code)?"chosen":""}`,onClick:this.answerChoose},
                         React.DOM.div({className:"divImg"},imgCodes),
                         React.DOM.span({className:"nameProd"},this.props.el.name),
                         React.DOM.span({className:"price"},`Цена ${this.props.el.price}`),

@@ -13,7 +13,6 @@ var MyStore = React.createClass({
     deleteobj:function(i){
         this.setState({delete:true,
                         sortSpisok:this.state.sortSpisok.filter((e)=>{
-                            console.log(e);
                             return !(e.code==i);
                         })});
     },
