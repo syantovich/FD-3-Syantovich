@@ -2,41 +2,35 @@ var MyProduct = React.createClass({
     displayName: "MyProduct",
     getInitialState: function () {
         return {
-            isClicked: false,
-            sortSpisok:this.props.spisok ,
             filter:"",
         };
     },
-    choose:function(EO,i){
-        this.setState({isClicked:i});
+    answerChoose:function(EO){
+        this.props.cbChoose(this.props.index);
     },
-    deleteobj:function(EO,i){
+    delobj:function(EO){
         EO.stopPropagation();
-        this.props.products.splice(i,1);
-        this.setState({isClicked:false});
+        this.props.cbDelete(this.props.index);
     },
     render:function(){
-        var infoCodes=[];
-        this.props.products.forEach((e,i) => {
-             var imgCodes=[];
-            e.photos.forEach(el=>{
-                let one=React.DOM.img({key:`${el}`,src:el},);
+        let imgCodes=[];
+            this.props.el.photos.forEach(e=>{
+                let one=React.DOM.img({key:`${e}`,src:e},);
                 imgCodes.push(one);
             });
-            let x=e.code;
-            let info=React.DOM.div({key:x,className:`info ${(this.state.isClicked===i)?"chosen":""}`,onClick:(EO)=>{this.choose(EO,i);}},
+            let x=this.props.el.code;
+            let info=React.DOM.div({key:x,className:`info ${(this.props.isClicked===this.props.index)?"chosen":""}`,onClick:this.answerChoose},
                         React.DOM.div({className:"divImg"},imgCodes),
-                        React.DOM.span({className:"nameProd"},e.name),
-                        React.DOM.span({className:"price"},`Цена ${e.price}`),
-                        React.DOM.span({className:"howmuch"},`На скалде осталось ${e.count}`),
-                        React.DOM.input({type:"submit",value:"Delete",onClick:(EO)=>{this.deleteobj(EO,i);}},null)
+                        React.DOM.span({className:"nameProd"},this.props.el.name),
+                        React.DOM.span({className:"price"},`Цена ${this.props.el.price}`),
+                        React.DOM.span({className:"howmuch"},`На скалде осталось ${this.props.el.count}`),
+                        React.DOM.input({type:"submit",value:"Delete",onClick:this.delobj},null)
                         );
-            infoCodes.push(info);
             
-        });
+        
 
 
-        return React.DOM.div({className:"MyProduct"},infoCodes)
+        return info;
         
     } 
 });
