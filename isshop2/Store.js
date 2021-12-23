@@ -1,3 +1,10 @@
+var React=require("react");
+
+require("Store.css");
+
+var MyProduct=require("MyProduct");
+
+
 var MyStore = React.createClass({
     displayName: "MyStore",
     getInitialState: function () {
@@ -29,3 +36,5 @@ var MyStore = React.createClass({
         spisokProducts)
     } 
 });
+
+module.exports=MyStore;

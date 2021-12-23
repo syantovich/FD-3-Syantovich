@@ -1,3 +1,6 @@
+require("Product.css");
+
+
 var MyProduct = React.createClass({
     displayName: "MyProduct",
     getInitialState: function () {
@@ -34,3 +37,5 @@ var MyProduct = React.createClass({
         
     } 
 });
+
+module.exports= MyProduct;
