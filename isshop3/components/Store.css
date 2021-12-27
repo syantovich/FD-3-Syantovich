@@ -1,0 +1,7 @@
+.MyStore {
+    width:90%;
+    font-family: 'Roboto', sans-serif;
+}
+.MyStore>h1{
+    text-align: center;
+}

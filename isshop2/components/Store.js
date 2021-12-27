@@ -1,8 +1,8 @@
 var React=require("react");
 
-require("Store.css");
+require("./Store.css");
 
-var MyProduct=require("MyProduct");
+var MyProduct=require("./Product");
 
 
 var MyStore = React.createClass({

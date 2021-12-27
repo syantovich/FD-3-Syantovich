@@ -1,5 +1,5 @@
-require("Product.css");
-
+require("./Product.css");
+var React=require("react");
 
 var MyProduct = React.createClass({
     displayName: "MyProduct",
