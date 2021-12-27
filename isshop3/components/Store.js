@@ -4,37 +4,31 @@ require("./Store.css");
 
 var MyProduct=require("./Product");
 
-
-var MyStore = React.createClass({
-    displayName: "MyStore",
-    getInitialState: function () {
-        return {
-            ClickedSelected: false,
-            sortSpisok:this.props.products ,
-            filter:"",
-        };
-    },
-    choose:function(i){
+class MyStore extends React.Component{
+    state ={
+        ClickedSelected: false,
+        sortSpisok:this.props.products ,
+        filter:"",
+    };
+    displayName = "MyStore";
+    choose=(i)=>{
         this.setState({ClickedSelected:i});
-    },
-    deleteobj:function(i){
+    };
+    deleteobj=(i)=>{
         this.setState({delete:true,
                         sortSpisok:this.state.sortSpisok.filter((e)=>{
                             return !(e.code==i);
                         })});
-    },
-    render:function(){
+    };
+    render(){
         let spisokProducts=[];
         this.state.sortSpisok.forEach((e,i)=>{
-            let myElement=React.createElement(MyProduct,{el:e,isClicked:this.state.ClickedSelected,key:e.code,cbChoose:this.choose,cbDelete:this.deleteobj});
+            let myElement=<MyProduct el={e} isClicked={this.state.ClickedSelected} key={e.code} cbChoose={this.choose} cbDelete= {this.deleteobj}/>
             spisokProducts.push(myElement);
         });
-        return React.DOM.div({
-            className: "MyStore"
-        },
-        React.DOM.h1(null, this.props.name),
-        spisokProducts)
-    } 
-});
+        return <div className="MyStore"><h1>{this.props.name}</h1>{spisokProducts}</div>;
+}}
+
+
 
 module.exports=MyStore;

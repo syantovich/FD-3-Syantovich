@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;700&display=swap');
-
-.chosen{
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@100;500;700&display=swap);.MyStore {
+    width:90%;
+    font-family: 'Roboto', sans-serif;
+}
+.MyStore>h1{
+    text-align: center;
+}.chosen{
     background-color: burlywood;
 }
 .MyProduct{
@@ -25,7 +29,7 @@
     top:10%;
     left:50%;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 10%;
 }
 .price{
     position: absolute;
@@ -33,7 +37,7 @@
     left:50%;
     color: brown;
     font-weight: 700;
-    font-size: 17px;
+    font-size: 7%;
 }
 .howmuch{
     position: absolute;
@@ -41,5 +45,7 @@
     left:50%;
     color: gray;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 5%;
 }
+
+/*# sourceMappingURL=bundle.css.map*/
