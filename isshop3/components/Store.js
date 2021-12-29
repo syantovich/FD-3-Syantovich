@@ -13,6 +13,22 @@ class MyStore extends React.Component{
         workmode:0,
     };
     displayName = "MyStore";
+    cbSave=(arr)=>{
+        this.state.sortSpisok.map((e,i,arr1)=>{
+            let k=0;
+            if(e.code==arr.code){
+                e.name=arr.name;
+                e.price=arr.price;
+                e.photos[0]=arr.photos[0];
+                e.count=arr.count;
+                k=1;
+            }
+            if(arr1.length-1==i&&k==0){
+                arr1.push(arr);
+            }
+        });
+        this.setState({sortSpisok:this.state.sortSpisok});
+    }
     elemFind=(e)=>{
         if(e.code==this.state.ClickedSelected){return true}else{return false}
     }
@@ -39,7 +55,7 @@ class MyStore extends React.Component{
             infoBlock=<MyItem spisok={this.state.sortSpisok} code={this.state.ClickedSelected} elemFind={this.elemFind}/>;
         }
         if(this.state.workmode>1){
-            infoBlock=<AddEdditItem workmode={this.state.workmode} spisok={this.state.sortSpisok} code={this.state.ClickedSelected} elemFind={this.elemFind}/>
+            infoBlock=<AddEdditItem workmode={this.state.workmode} spisok={this.state.sortSpisok} code={this.state.ClickedSelected} elemFind={this.elemFind} cbSave={this.cbSave}/>
         }
         return <div className="MyStore"><h1>{this.props.name}</h1>{myElement}{infoBlock}</div>;
 }}
