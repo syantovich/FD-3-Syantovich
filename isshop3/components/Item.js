@@ -8,12 +8,7 @@ class MyItem extends React.Component{
 
     render(){
         let imgCodes=[];
-            let el;
-            this.props.spisok.forEach(e=>{
-                if(e.code===this.props.code){
-                    el=e;
-                }
-            });
+        let el=this.props.spisok.find(this.props.elemFind);
             if(el==undefined){return false;}
             el.photos.forEach(e=>{
                 let one=<img key={e} src={e}></img>;

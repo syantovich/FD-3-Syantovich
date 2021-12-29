@@ -20,7 +20,7 @@ class MyProduct extends React.Component{
     render(){  
         let spisokProducts=[];
         this.props.spisok.forEach((e,i)=>{
-            let item=<tr className={(this.props.isClicked===e.code)?"chosen":""} key={e.photos[0]} onClick={(EO)=>{this.change(1); this.answerChoose(EO,e.code);}}>
+            let item=<tr className={(this.props.code===e.code)?"chosen":""} key={e.photos[0]} onClick={(EO)=>{this.change(1); this.answerChoose(EO,e.code);}}>
             <td>{e.name}</td>
             <td>{e.price}</td>
             <td>{e.photos[0]}</td>

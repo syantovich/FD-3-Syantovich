@@ -13,6 +13,9 @@ class MyStore extends React.Component{
         workmode:0,
     };
     displayName = "MyStore";
+    elemFind=(e)=>{
+        if(e.code==this.state.ClickedSelected){return true}else{return false}
+    }
     choose=(i)=>{
         this.setState({ClickedSelected:i});
     };
@@ -28,15 +31,15 @@ class MyStore extends React.Component{
     };
     render(){
 
-            let myElement=<MyProduct spisok={this.state.sortSpisok} isClicked={this.state.ClickedSelected} cbChoose={this.choose} cbDelete= {this.deleteobj} cbChangeMode={this.changeMode} wm={this.state.workmode}/>
+            let myElement=<MyProduct spisok={this.state.sortSpisok} code={this.state.ClickedSelected} cbChoose={this.choose} cbDelete= {this.deleteobj} cbChangeMode={this.changeMode} wm={this.state.workmode} elemFind={this.elemFind}/>
 
         let infoBlock=false;
             
         if(this.state.workmode==1){
-            infoBlock=<MyItem spisok={this.state.sortSpisok} code={this.state.ClickedSelected}/>;
+            infoBlock=<MyItem spisok={this.state.sortSpisok} code={this.state.ClickedSelected} elemFind={this.elemFind}/>;
         }
         if(this.state.workmode>1){
-            infoBlock=<AddEdditItem workmode={this.state.workmode} spisok={this.state.sortSpisok} code={this.state.ClickedSelected}/>
+            infoBlock=<AddEdditItem workmode={this.state.workmode} spisok={this.state.sortSpisok} code={this.state.ClickedSelected} elemFind={this.elemFind}/>
         }
         return <div className="MyStore"><h1>{this.props.name}</h1>{myElement}{infoBlock}</div>;
 }}
