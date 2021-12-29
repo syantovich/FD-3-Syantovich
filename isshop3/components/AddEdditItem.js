@@ -17,7 +17,7 @@ class AddEdditItem extends React.Component{
                 
             }
         });
-        if (el==false)return false;
+        if (this.props.workmode==2&&el==false)return false;
         let nameBlock=<p>{(this.props.workmode==2)?"Eddit existing Product":"Add new product"}</p>;
         let code=(this.props.workmode==2)?<label>Code: <input type="number" defaultValue={el.code}/></label>:<p>Code:{el.code}</p>
         let name=<label>Name: <input type="text" defaultValue={(this.props.workmode==2)?el.name:""}/></label>

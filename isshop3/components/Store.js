@@ -27,11 +27,9 @@ class MyStore extends React.Component{
         this.setState({workmode:num});
     };
     render(){
-        let spisokProducts=[];
-        this.state.sortSpisok.forEach((e,i)=>{
-            let myElement=<MyProduct el={e} isClicked={this.state.ClickedSelected} key={e.code} cbChoose={this.choose} cbDelete= {this.deleteobj} cbChangeMode={this.changeMode} wm={this.state.workmode}/>
-            spisokProducts.push(myElement);
-        });
+
+            let myElement=<MyProduct spisok={this.state.sortSpisok} isClicked={this.state.ClickedSelected} cbChoose={this.choose} cbDelete= {this.deleteobj} cbChangeMode={this.changeMode} wm={this.state.workmode}/>
+
         let infoBlock=false;
             
         if(this.state.workmode==1){
@@ -40,7 +38,7 @@ class MyStore extends React.Component{
         if(this.state.workmode>1){
             infoBlock=<AddEdditItem workmode={this.state.workmode} spisok={this.state.sortSpisok} code={this.state.ClickedSelected}/>
         }
-        return <div className="MyStore"><h1>{this.props.name}</h1><table><tbody><tr><th>Имя</th><th>Price</th><th>URL</th><th>Quantity</th><th>Control</th></tr>{spisokProducts}</tbody></table>{infoBlock}</div>;
+        return <div className="MyStore"><h1>{this.props.name}</h1>{myElement}{infoBlock}</div>;
 }}
 
 

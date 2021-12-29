@@ -4,28 +4,33 @@ var React=require("react");
 class MyProduct extends React.Component{
     state = {
         filter:"",
+
     };
     displayName =  "MyProduct";
-    answerChoose=(EO)=>{
-        this.props.cbChoose(this.props.el.code);
+    answerChoose=(EO,code)=>{
+        this.props.cbChoose(code);
     };
     change(num){
         this.props.cbChangeMode(num);
     }
-    delobj=(EO)=>{
+    delobj=(EO,code)=>{
         EO.stopPropagation();
-        this.props.cbDelete(this.props.el.code);
+        this.props.cbDelete(code);
     };
     render(){  
-
-        return <tr className={(this.props.isClicked===this.props.el.code)?"chosen":""} onClick={()=>{this.change(1);this.answerChoose();}}>
-        <td>{this.props.el.name}</td>
-        <td>{this.props.el.price}</td>
-        <td>{this.props.el.photos[0]}</td>
-        <td>{this.props.el.count}</td>
-        <td><button onClick={this.delobj}>Delete</button><button onClick={(EO)=>{EO.stopPropagation();this.answerChoose();if(this.props.wm!=2 ){this.change(2);}}}>Edit</button></td>
-        </tr>;
-        
+        let spisokProducts=[];
+        this.props.spisok.forEach((e,i)=>{
+            let item=<tr className={(this.props.isClicked===e.code)?"chosen":""} key={e.photos[0]} onClick={(EO)=>{this.change(1); this.answerChoose(EO,e.code);}}>
+            <td>{e.name}</td>
+            <td>{e.price}</td>
+            <td>{e.photos[0]}</td>
+            <td>{e.count}</td>
+            <td><button onClick={(EO)=>{this.delobj(EO,e.code)}}>Delete</button><button onClick={(EO)=>{EO.stopPropagation();if(this.props.wm!=2 ){this.change(2);}this.answerChoose(EO,e.code);}}>Edit</button></td>
+            </tr>;
+            spisokProducts.push(item);
+        });
+            
+        return <div><table><tbody><tr><th>Имя</th><th>Price</th><th>URL</th><th>Quantity</th><th>Control</th></tr>{spisokProducts}</tbody></table><button onClick={(EO)=>{this.change(3);this.answerChoose(EO,undefined);}}>Add new item</button></div>;
     } 
 }
 
