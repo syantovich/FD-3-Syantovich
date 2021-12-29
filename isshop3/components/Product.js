@@ -1,4 +1,4 @@
-require("./Product.css");
+
 var React=require("react");
 
 class MyProduct extends React.Component{
@@ -9,29 +9,22 @@ class MyProduct extends React.Component{
     answerChoose=(EO)=>{
         this.props.cbChoose(this.props.el.code);
     };
+    change(num){
+        this.props.cbChangeMode(num);
+    }
     delobj=(EO)=>{
         EO.stopPropagation();
         this.props.cbDelete(this.props.el.code);
     };
-    render(){
-        let imgCodes=[];
-            this.props.el.photos.forEach(e=>{
-                let one=<img key={e} src={e}></img>;
-                imgCodes.push(one);
-            });
-            let x=this.props.el.code;
-            let info=<div key={x} className={`info ${(this.props.isClicked===this.props.el.code)?"chosen":""}`} onClick={this.answerChoose}>
-                <div className="divImg">{imgCodes}</div>
-                <span className="nameProd">{this.props.el.name}</span>
-                <span className="price">Цена {this.props.el.price}</span>
-                <span className="howmuch">На скалде осталось {this.props.el.count}</span>
-                <input type="submit" value="Delete" onClick={this.delobj} />
-            </div>
-            
-        
+    render(){  
 
-
-        return info;
+        return <tr className={(this.props.isClicked===this.props.el.code)?"chosen":""} onClick={()=>{this.change(1);this.answerChoose();}}>
+        <td>{this.props.el.name}</td>
+        <td>{this.props.el.price}</td>
+        <td>{this.props.el.photos[0]}</td>
+        <td>{this.props.el.count}</td>
+        <td><button onClick={this.delobj}>Delete</button><button onClick={(EO)=>{EO.stopPropagation();this.answerChoose();if(this.props.wm!=2 ){this.change(2);}}}>Edit</button></td>
+        </tr>;
         
     } 
 }

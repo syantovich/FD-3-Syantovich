@@ -963,10 +963,11 @@ var React = __webpack_require__(3);
 
 var ReactDOM = __webpack_require__(18);
 
-var nameStore = __webpack_require__(32);
-var products = __webpack_require__(33);
-console.log(products);
-var MyStore = __webpack_require__(34);
+var MyStore = __webpack_require__(32);
+
+var nameStore = __webpack_require__(36);
+var products = __webpack_require__(37);
+
 ReactDOM.render(React.createElement(MyStore, { name: nameStore, products: products }), document.getElementById('container'));
 
 /***/ }),
@@ -21170,15 +21171,86 @@ module.exports = function() {
 
 /***/ }),
 /* 32 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = "21VEK"
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var React = __webpack_require__(3);
+
+__webpack_require__(33);
+
+var MyProduct = __webpack_require__(34);
+
+var MyStore = function (_React$Component) {
+    _inherits(MyStore, _React$Component);
+
+    function MyStore() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, MyStore);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyStore.__proto__ || Object.getPrototypeOf(MyStore)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+            ClickedSelected: false,
+            sortSpisok: _this.props.products,
+            filter: ""
+        }, _this.displayName = "MyStore", _this.choose = function (i) {
+            _this.setState({ ClickedSelected: i });
+        }, _this.deleteobj = function (i) {
+            _this.setState({ delete: true,
+                sortSpisok: _this.state.sortSpisok.filter(function (e) {
+                    return !(e.code == i);
+                }) });
+        }, _temp), _possibleConstructorReturn(_this, _ret);
+    }
+
+    _createClass(MyStore, [{
+        key: "render",
+        value: function render() {
+            var _this2 = this;
+
+            var spisokProducts = [];
+            this.state.sortSpisok.forEach(function (e, i) {
+                var myElement = React.createElement(MyProduct, { el: e, isClicked: _this2.state.ClickedSelected, key: e.code, cbChoose: _this2.choose, cbDelete: _this2.deleteobj });
+                spisokProducts.push(myElement);
+            });
+            return React.createElement(
+                "div",
+                { className: "MyStore" },
+                React.createElement(
+                    "h1",
+                    null,
+                    this.props.name
+                ),
+                spisokProducts
+            );
+        }
+    }]);
+
+    return MyStore;
+}(React.Component);
+
+module.exports = MyStore;
 
 /***/ }),
 /* 33 */
 /***/ (function(module, exports) {
 
-module.exports = [{"name":"Realme 8 6GB/128GB","price":699,"photos":["https://cdn21vek.by/img/galleries/6545/81/preview_b/86gb128gbrmx3085_realme_01_60c11558b8a06.jpeg","https://cdn21vek.by/img/galleries/6545/81/preview_b/86gb128gbrmx3085_realme_01_60c1155991fc4.jpeg"],"code":145,"count":23},{"name":"Xiaomi Redmi 9A 2GB/32GB (серый)","price":279,"photos":["https://cdn21vek.by/img/galleries/6088/597/preview_b/redmi9a2gb32gbm2006c3lg_xiaomi_01_5f16ddbfba68a.jpeg","https://cdn21vek.by/img/galleries/6088/597/preview_b/redmi9a2gb32gbm2006c3lg_xiaomi_01_5f16ddc34b02b.jpeg","https://cdn21vek.by/img/galleries/6088/597/preview_b/redmi9a2gb32gbm2006c3lg_xiaomi_01_5f16ddc3e9a66.jpeg"],"code":2546,"count":11},{"name":"Samsung Galaxy A02 ","price":148,"photos":["https://cdn21vek.by/img/galleries/6368/637/preview_b/galaxya02sma022gzbbser_samsung_6020da95a4345.jpeg","https://cdn21vek.by/img/galleries/6368/637/preview_b/galaxya02sma022gzbbser_samsung_6020da9a9a23a.jpeg","https://cdn21vek.by/img/galleries/6368/637/preview_b/galaxya02sma022gzbbser_samsung_6020da99de118.jpeg"],"code":3456,"count":45},{"name":"Xiaomi Redmi Note 10S 6GB/128GB","price":666,"photos":["https://cdn21vek.by/img/galleries/6538/254/preview_b/redminote10s6gb128gb_xiaomi_01_609e36e931ae5.jpeg","https://cdn21vek.by/img/galleries/6538/254/preview_b/redminote10s6gb128gb_xiaomi_01_609e38f7b3595.jpeg","https://cdn21vek.by/img/galleries/6538/254/preview_b/redminote10s6gb128gb_xiaomi_01_609e38f8661b9.jpeg"],"code":4564,"count":1},{"name":"Samsung Galaxy A12 32GB","price":777,"photos":["https://cdn21vek.by/img/galleries/6737/22/preview_b/galaxya1232gbsma127fzkuser_samsung_610268f887eba.jpeg","https://cdn21vek.by/img/galleries/6737/22/preview_b/galaxya1232gbsma127fzkuser_samsung_610268f8d4430.jpeg","https://cdn21vek.by/img/galleries/6737/22/preview_b/galaxya1232gbsma127fzkuser_samsung_610268f91eb56.jpeg"],"code":524,"count":0},{"name":"Apple iPhone 11 128GB","price":2000,"photos":["https://cdn21vek.by/img/galleries/6270/100/preview_b/iphone11128gbmhdj3_apple_5fec1ba792d5d.jpeg","https://cdn21vek.by/img/galleries/6270/100/preview_b/iphone11128gbmhdj3_apple_5fec1bb00190b.jpeg","https://cdn21vek.by/img/galleries/6270/100/preview_b/iphone11128gbmhdj3_apple_5fec1bb122283.jpeg"],"code":6645,"count":89},{"name":"Apple iPhone XR 64GB","price":1800,"photos":["https://cdn21vek.by/img/galleries/6337/124/preview_b/iphonexr64gbmh6m3_apple_602b612dcc1e4.jpeg","https://cdn21vek.by/img/galleries/6337/124/preview_b/iphonexr64gbmh6m3_apple_602b6135689dc.jpeg","https://cdn21vek.by/img/galleries/6337/124/preview_b/iphonexr64gbmh6m3_apple_602b6135a3687.jpeg"],"code":7789,"count":61},{"name":"Huawei Y8p","price":479,"photos":["https://cdn21vek.by/img/galleries/5997/782/preview_b/y8paqmlx1_huawei_5ec3a0653b253.png","https://cdn21vek.by/img/galleries/5997/782/preview_b/y8paqmlx1_huawei_5ec3a01055e13.png","https://cdn21vek.by/img/galleries/5997/782/preview_b/y8paqmlx1_huawei_5ec3a01082001.png"],"code":8879,"count":3}]
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 34 */
@@ -21187,45 +21259,86 @@ module.exports = [{"name":"Realme 8 6GB/128GB","price":699,"photos":["https://cd
 "use strict";
 
 
-var React = __webpack_require__(3);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 __webpack_require__(35);
+var React = __webpack_require__(3);
 
-var MyProduct = __webpack_require__(36);
+var MyProduct = function (_React$Component) {
+    _inherits(MyProduct, _React$Component);
 
-var MyStore = React.createClass({
-    displayName: "MyStore",
-    getInitialState: function getInitialState() {
-        return {
-            ClickedSelected: false,
-            sortSpisok: this.props.products,
+    function MyProduct() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
+        _classCallCheck(this, MyProduct);
+
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = MyProduct.__proto__ || Object.getPrototypeOf(MyProduct)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             filter: ""
-        };
-    },
-    choose: function choose(i) {
-        this.setState({ ClickedSelected: i });
-    },
-    deleteobj: function deleteobj(i) {
-        this.setState({ delete: true,
-            sortSpisok: this.state.sortSpisok.filter(function (e) {
-                return !(e.code == i);
-            }) });
-    },
-    render: function render() {
-        var _this = this;
-
-        var spisokProducts = [];
-        this.state.sortSpisok.forEach(function (e, i) {
-            var myElement = React.createElement(MyProduct, { el: e, isClicked: _this.state.ClickedSelected, key: e.code, cbChoose: _this.choose, cbDelete: _this.deleteobj });
-            spisokProducts.push(myElement);
-        });
-        return React.DOM.div({
-            className: "MyStore"
-        }, React.DOM.h1(null, this.props.name), spisokProducts);
+        }, _this.displayName = "MyProduct", _this.answerChoose = function (EO) {
+            _this.props.cbChoose(_this.props.el.code);
+        }, _this.delobj = function (EO) {
+            EO.stopPropagation();
+            _this.props.cbDelete(_this.props.el.code);
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
-});
 
-module.exports = MyStore;
+    _createClass(MyProduct, [{
+        key: "render",
+        value: function render() {
+            var imgCodes = [];
+            this.props.el.photos.forEach(function (e) {
+                var one = React.createElement("img", { key: e, src: e });
+                imgCodes.push(one);
+            });
+            var x = this.props.el.code;
+            var info = React.createElement(
+                "div",
+                { key: x, className: "info " + (this.props.isClicked === this.props.el.code ? "chosen" : ""), onClick: this.answerChoose },
+                React.createElement(
+                    "div",
+                    { className: "divImg" },
+                    imgCodes
+                ),
+                React.createElement(
+                    "span",
+                    { className: "nameProd" },
+                    this.props.el.name
+                ),
+                React.createElement(
+                    "span",
+                    { className: "price" },
+                    "\u0426\u0435\u043D\u0430 ",
+                    this.props.el.price
+                ),
+                React.createElement(
+                    "span",
+                    { className: "howmuch" },
+                    "\u041D\u0430 \u0441\u043A\u0430\u043B\u0434\u0435 \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C ",
+                    this.props.el.count
+                ),
+                React.createElement("input", { type: "submit", value: "Delete", onClick: this.delobj })
+            );
+
+            return info;
+        }
+    }]);
+
+    return MyProduct;
+}(React.Component);
+
+module.exports = MyProduct;
 
 /***/ }),
 /* 35 */
@@ -21235,48 +21348,15 @@ module.exports = MyStore;
 
 /***/ }),
 /* 36 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-
-
-__webpack_require__(37);
-var React = __webpack_require__(3);
-
-var MyProduct = React.createClass({
-    displayName: "MyProduct",
-    getInitialState: function getInitialState() {
-        return {
-            filter: ""
-        };
-    },
-    answerChoose: function answerChoose(EO) {
-        this.props.cbChoose(this.props.el.code);
-    },
-    delobj: function delobj(EO) {
-        EO.stopPropagation();
-        this.props.cbDelete(this.props.el.code);
-    },
-    render: function render() {
-        var imgCodes = [];
-        this.props.el.photos.forEach(function (e) {
-            var one = React.DOM.img({ key: "" + e, src: e });
-            imgCodes.push(one);
-        });
-        var x = this.props.el.code;
-        var info = React.DOM.div({ key: x, className: "info " + (this.props.isClicked === this.props.el.code ? "chosen" : ""), onClick: this.answerChoose }, React.DOM.div({ className: "divImg" }, imgCodes), React.DOM.span({ className: "nameProd" }, this.props.el.name), React.DOM.span({ className: "price" }, "\u0426\u0435\u043D\u0430 " + this.props.el.price), React.DOM.span({ className: "howmuch" }, "\u041D\u0430 \u0441\u043A\u0430\u043B\u0434\u0435 \u043E\u0441\u0442\u0430\u043B\u043E\u0441\u044C " + this.props.el.count), React.DOM.input({ type: "submit", value: "Delete", onClick: this.delobj }, null));
-
-        return info;
-    }
-});
-
-module.exports = MyProduct;
+module.exports = "21VEK"
 
 /***/ }),
 /* 37 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+module.exports = [{"name":"Realme 8 6GB/128GB","price":699,"photos":["https://cdn21vek.by/img/galleries/6545/81/preview_b/86gb128gbrmx3085_realme_01_60c11558b8a06.jpeg","https://cdn21vek.by/img/galleries/6545/81/preview_b/86gb128gbrmx3085_realme_01_60c1155991fc4.jpeg"],"code":145,"count":23},{"name":"Xiaomi Redmi 9A 2GB/32GB (серый)","price":279,"photos":["https://cdn21vek.by/img/galleries/6088/597/preview_b/redmi9a2gb32gbm2006c3lg_xiaomi_01_5f16ddbfba68a.jpeg","https://cdn21vek.by/img/galleries/6088/597/preview_b/redmi9a2gb32gbm2006c3lg_xiaomi_01_5f16ddc34b02b.jpeg","https://cdn21vek.by/img/galleries/6088/597/preview_b/redmi9a2gb32gbm2006c3lg_xiaomi_01_5f16ddc3e9a66.jpeg"],"code":2546,"count":11},{"name":"Samsung Galaxy A02 ","price":148,"photos":["https://cdn21vek.by/img/galleries/6368/637/preview_b/galaxya02sma022gzbbser_samsung_6020da95a4345.jpeg","https://cdn21vek.by/img/galleries/6368/637/preview_b/galaxya02sma022gzbbser_samsung_6020da9a9a23a.jpeg","https://cdn21vek.by/img/galleries/6368/637/preview_b/galaxya02sma022gzbbser_samsung_6020da99de118.jpeg"],"code":3456,"count":45},{"name":"Xiaomi Redmi Note 10S 6GB/128GB","price":666,"photos":["https://cdn21vek.by/img/galleries/6538/254/preview_b/redminote10s6gb128gb_xiaomi_01_609e36e931ae5.jpeg","https://cdn21vek.by/img/galleries/6538/254/preview_b/redminote10s6gb128gb_xiaomi_01_609e38f7b3595.jpeg","https://cdn21vek.by/img/galleries/6538/254/preview_b/redminote10s6gb128gb_xiaomi_01_609e38f8661b9.jpeg"],"code":4564,"count":1},{"name":"Samsung Galaxy A12 32GB","price":777,"photos":["https://cdn21vek.by/img/galleries/6737/22/preview_b/galaxya1232gbsma127fzkuser_samsung_610268f887eba.jpeg","https://cdn21vek.by/img/galleries/6737/22/preview_b/galaxya1232gbsma127fzkuser_samsung_610268f8d4430.jpeg","https://cdn21vek.by/img/galleries/6737/22/preview_b/galaxya1232gbsma127fzkuser_samsung_610268f91eb56.jpeg"],"code":524,"count":0},{"name":"Apple iPhone 11 128GB","price":2000,"photos":["https://cdn21vek.by/img/galleries/6270/100/preview_b/iphone11128gbmhdj3_apple_5fec1ba792d5d.jpeg","https://cdn21vek.by/img/galleries/6270/100/preview_b/iphone11128gbmhdj3_apple_5fec1bb00190b.jpeg","https://cdn21vek.by/img/galleries/6270/100/preview_b/iphone11128gbmhdj3_apple_5fec1bb122283.jpeg"],"code":6645,"count":89},{"name":"Apple iPhone XR 64GB","price":1800,"photos":["https://cdn21vek.by/img/galleries/6337/124/preview_b/iphonexr64gbmh6m3_apple_602b612dcc1e4.jpeg","https://cdn21vek.by/img/galleries/6337/124/preview_b/iphonexr64gbmh6m3_apple_602b6135689dc.jpeg","https://cdn21vek.by/img/galleries/6337/124/preview_b/iphonexr64gbmh6m3_apple_602b6135a3687.jpeg"],"code":7789,"count":61},{"name":"Huawei Y8p","price":479,"photos":["https://cdn21vek.by/img/galleries/5997/782/preview_b/y8paqmlx1_huawei_5ec3a0653b253.png","https://cdn21vek.by/img/galleries/5997/782/preview_b/y8paqmlx1_huawei_5ec3a01055e13.png","https://cdn21vek.by/img/galleries/5997/782/preview_b/y8paqmlx1_huawei_5ec3a01082001.png"],"code":8879,"count":3}]
 
 /***/ })
 /******/ ]);
