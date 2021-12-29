@@ -8,10 +8,6 @@ class AddEdditItem extends React.Component{
     state={
         code:this.props.code,
         el:false,
-        name:null,
-        price:null,
-        url:null,
-        quantity:null,
     }
     createArrValueOfInput=(el) => {
         let code1;
@@ -40,7 +36,7 @@ class AddEdditItem extends React.Component{
         let count=<label>Quantity: <input type="number" id="quantity" defaultValue={(this.props.workmode==2)?el.count:""}/></label>
 
         return (
-            <div>
+            <div key={(this.props.workmode==2)?el.code:-1}>
                 {nameBlock}<br/>
                 {code}<br/>
                 {name}<br/>
