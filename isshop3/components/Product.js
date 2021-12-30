@@ -25,7 +25,7 @@ class MyProduct extends React.Component{
             spisokProducts.push(item);
         });
             
-        return <div><table><tbody><tr><th>Имя</th><th>Price</th><th>URL</th><th>Quantity</th><th>Control</th></tr>{spisokProducts}</tbody></table>{ (this.props.wm<2)?<button onClick={(EO)=>{this.change(3);this.answerChoose(EO,undefined);}}>Add new item</button>:false}</div>;
+        return <div><table><tbody><tr><th>Имя</th><th>Price</th><th>URL</th><th>Quantity</th><th>Code</th><th>Control</th></tr>{spisokProducts}</tbody></table>{ (this.props.wm<2)?<button onClick={(EO)=>{this.change(3);this.answerChoose(EO,undefined);}}>Add new item</button>:false}</div>;
     } 
 }
 

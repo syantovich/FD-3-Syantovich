@@ -6,7 +6,8 @@ class OneProduct extends React.Component{
             <td>{this.props.e.price}</td>
             <td>{this.props.e.photos[0]}</td>
             <td>{this.props.e.count}</td>
-            <td><button onClick={(EO)=>{this.delobj(EO,this.props.e.code)}} disabled={this.props.edited}>Delete</button><button onClick={(EO)=>{EO.stopPropagation();if(this.props.wm!=2 ){this.props.cbChangeMode(2);}this.props.cbChoose(EO,this.props.e.code);}} disabled={this.props.edited}>Edit</button></td>
+            <td>{this.props.e.code}</td>
+            <td><button onClick={(EO)=>{this.props.cbDelete(EO,this.props.e.code)}} disabled={this.props.edited}>Delete</button><button onClick={(EO)=>{EO.stopPropagation();if(this.props.wm!=2 ){this.props.cbChangeMode(2);}this.props.cbChoose(EO,this.props.e.code);}} disabled={this.props.edited}>Edit</button></td>
             </tr>;
     }
 }

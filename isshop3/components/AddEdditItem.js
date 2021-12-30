@@ -41,7 +41,7 @@ class AddEdditItem extends React.Component{
     createArrValueOfInput=(el) => {
         let code1;
         
-        if (el==undefined){code1=document.getElementById("code").value}else{code1=el.code}
+        if (el!=undefined){code1=el.code}
         let name1=document.getElementById("name");
         let price1=document.getElementById("price");
         let url1=document.getElementById("url");
@@ -58,7 +58,7 @@ class AddEdditItem extends React.Component{
         let el=this.props.el;
         if (this.props.workmode==2&&el==undefined)return false;
         let nameBlock=<p>{(this.props.workmode==2)?"Eddit existing Product":"Add new product"}</p>;
-        let code=(this.props.workmode==3)?<label>Code: <input type="number" id="code" onChange={()=>{this.validInput("code");this.props.cbEdited(true);}}/>{this.state.valid["code"]&&"Please check this value"}</label>:<p>Code:{el.code}</p>
+        let code=(this.props.workmode==3)?<p>Code:{this.props.maxCode+1}</p>:<p>Code:{el.code}</p>
         let name=<label>Name: <input type="text" id="name" defaultValue={(this.props.workmode==2)?el.name:"" } onChange={()=>{this.validInput("name");this.props.cbEdited(true);}}/>{this.state.valid["name"]&&"Please check this value"}</label>
         let price=<label>Price: <input type="number" id="price" defaultValue={(this.props.workmode==2)?el.price:""} onChange={()=>{this.validInput("price");this.props.cbEdited(true);}}/>{this.state.valid["price"]&&"Please check this value"}</label>
         let url1=<label>URL Photo1: <input type="text" id="url" defaultValue={(this.props.workmode==2)?el.photos[0]:""} onChange={()=>{this.validInput("url");this.props.cbEdited(true);}}/>{this.state.valid["url"]&&"Please check this value"}</label>
