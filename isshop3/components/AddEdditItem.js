@@ -55,7 +55,7 @@ class AddEdditItem extends React.Component{
         }
     }
     render(){
-        let el=this.props.spisok.find(this.props.elemFind);
+        let el=this.props.el;
         if (this.props.workmode==2&&el==undefined)return false;
         let nameBlock=<p>{(this.props.workmode==2)?"Eddit existing Product":"Add new product"}</p>;
         let code=(this.props.workmode==3)?<label>Code: <input type="number" id="code" onChange={()=>{this.validInput("code");this.props.cbEdited(true);}}/>{this.state.valid["code"]&&"Please check this value"}</label>:<p>Code:{el.code}</p>
