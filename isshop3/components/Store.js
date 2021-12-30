@@ -70,7 +70,7 @@ class MyStore extends React.Component{
         let infoBlock=false;
             
         if(this.state.workmode==1){
-            infoBlock=<MyItem spisok={this.state.sortSpisok} code={this.state.ClickedSelected} elemFind={this.elemFind} el={this.state.sortSpisok.find(this.elemFind)}/>;
+            infoBlock=<MyItem el={this.state.sortSpisok.find(this.elemFind)}/>;
         }
         if(this.state.workmode>1){
             infoBlock=<AddEdditItem workmode={this.state.workmode} el={this.state.sortSpisok.find(this.elemFind)} elemFind={this.elemFind} cbSave={this.cbSave} cbChangeMode={this.changeMode} cbChoose={this.choose} valid={this.state.valid||{}} cbEdited={this.cbEdited}/>
