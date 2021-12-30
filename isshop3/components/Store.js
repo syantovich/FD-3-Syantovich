@@ -41,7 +41,7 @@ class MyStore extends React.Component{
     elemFind=(e)=>{
         if(e.code==this.state.ClickedSelected){return true}else{return false}
     }
-    choose=(i)=>{
+    choose=(EO,i)=>{
         this.setState({ClickedSelected:i});
     };
     deleteobj=(i)=>{
@@ -65,7 +65,7 @@ class MyStore extends React.Component{
     };
     render(){
 
-            let myElement=<MyProduct spisok={this.state.sortSpisok} code={this.state.ClickedSelected} cbChoose={this.choose} cbDelete= {this.deleteobj} cbChangeMode={this.changeMode} wm={this.state.workmode} elemFind={this.elemFind} edited={this.state.edited}/>
+            let myElement=<MyProduct spisok={this.state.sortSpisok} code={this.state.ClickedSelected}  cbChoose={this.choose} cbDelete= {this.deleteobj} cbChangeMode={this.changeMode} wm={this.state.workmode} elemFind={this.elemFind} edited={this.state.edited}/>
 
         let infoBlock=false;
             

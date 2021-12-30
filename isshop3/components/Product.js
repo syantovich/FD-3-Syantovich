@@ -1,5 +1,6 @@
 
 var React=require("react");
+var OneProduct=require("./OneProduct");
 
 class MyProduct extends React.Component{
     state = {
@@ -20,13 +21,7 @@ class MyProduct extends React.Component{
     render(){  
         let spisokProducts=[];
         this.props.spisok.forEach((e,i)=>{
-            let item=<tr className={(this.props.code===e.code)?"chosen":""} key={e.code+"-"+ 0} onClick={(EO)=>{if(!this.props.edited&&this.props.wm!=3){this.change(1); this.answerChoose(EO,e.code);}}}>
-            <td>{e.name}</td>
-            <td>{e.price}</td>
-            <td>{e.photos[0]}</td>
-            <td>{e.count}</td>
-            <td><button onClick={(EO)=>{this.delobj(EO,e.code)}} disabled={this.props.edited}>Delete</button><button onClick={(EO)=>{EO.stopPropagation();if(this.props.wm!=2 ){this.change(2);}this.answerChoose(EO,e.code);}} disabled={this.props.edited}>Edit</button></td>
-            </tr>;
+            let item=<OneProduct e={e} key={e.code} code={this.props.code} cbChoose={this.props.cbChoose} cbDelete= {this.props.cbDelete} cbChangeMode={this.props.cbChangeMode} wm={this.props.wm} elemFind={this.props.elemFind} edited={this.props.edited}/>;
             spisokProducts.push(item);
         });
             
