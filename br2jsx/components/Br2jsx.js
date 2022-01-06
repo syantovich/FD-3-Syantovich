@@ -10,12 +10,13 @@ class Br2jsx extends React.Component {
   render() {
     
     let arr=this.props.string.split(/\<\s*[b][r]\s*\/?\>/);
-    let br=<br/>;
-for(let i=0;i<arr.length;i++){
-  arr.splice(i,0,br);
-  i++;
+    let newArr=[];
+for(let i=0;i<arr.length-1;i++){
+  let br=<br key={i}/>;
+  newArr.push(arr[i],br);
 }
-        return arr;
+newArr.push(arr[arr.length-1]);
+        return newArr;
   }
 
 }
