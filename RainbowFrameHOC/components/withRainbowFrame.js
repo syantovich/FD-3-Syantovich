@@ -11,6 +11,7 @@ function withRainbowFrame(arrColors){
                 {div}
               </div>;
             }
+
             console.log(props)
             return div
         };
