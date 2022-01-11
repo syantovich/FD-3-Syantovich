@@ -13,7 +13,7 @@ function withRainbowFrame(arrColors){
             }
             console.log(props);
             return (<Component>
-                <p>{div}</p>
+                {div}
             </Component>)
         };
     }
