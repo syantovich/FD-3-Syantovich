@@ -114,7 +114,9 @@ componentDidMount() {
                     if(e.balance<0)return true;
                     break;
             }
-            })});
+            }),
+                            workmode:"Show",
+                            edited:null});
     };
     setName = (name) => {
     this.setState({name:name});
