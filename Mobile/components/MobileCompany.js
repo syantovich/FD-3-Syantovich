@@ -45,6 +45,14 @@ componentDidMount() {
     voteEvents.addListener("Esave",this.saveEdit);
     voteEvents.addListener("Eadd",this.saveNewClient);
 }
+    componentWillUnmount = () => {
+        voteEvents.removeListener("EsetName",this.setName);
+        voteEvents.removeListener("EfilterClientsMode",this.filterClientsMode);
+        voteEvents.removeListener("EsetMode",this.setMode);
+        voteEvents.removeListener("Edelete",this.deleteClient);
+        voteEvents.removeListener("Esave",this.saveEdit);
+        voteEvents.removeListener("Eadd",this.saveNewClient);
+    };
     saveNewClient=(id,im,fam,otch,balance)=>{
     let und=this.state.allClients.find(e=>e.id==id);
     if (und==undefined) {
