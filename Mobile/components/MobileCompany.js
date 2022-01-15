@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import MobileClient from './MobileClient';
 import AddEditClient from "./AddEditClient";
 import {maxClientsID} from "../modules/maxClientsID";
+import MobileFilter from "./MobileFilter";
 
+import "./MobileCompany.css"
 
 import {voteEvents} from "./events";
 
@@ -166,20 +168,15 @@ componentDidMount() {
       <div className='MobileCompany'>
         <input type="button" value="=МТС" onClick={()=>voteEvents.emit("EsetName","MTC")} />
         <input type="button" value="=Velcom" onClick={()=>voteEvents.emit("EsetName","Velcom")} />
-          <div>
-              <input type="button" value="Все" id={"all"} onClick={()=>{voteEvents.emit("EfilterClientsMode","all")}}/>
-              <input type="button" value="Активные" id={"active"} onClick={()=>{voteEvents.emit("EfilterClientsMode","active")}}/>
-              <input type="button" value="Заблокированные" id={"blocked"} onClick={()=>{voteEvents.emit("EfilterClientsMode","blocked")}}/>
-          </div>
+          <MobileFilter></MobileFilter>
         <div className='MobileCompanyName'>Компания &laquo;{this.state.name}&raquo;</div>
         <div className='MobileCompanyClients'>
           <table>
           {clientsCode}
           </table>
         </div>
-        <input type="button" value="Добавить клиента" onClick={()=>{voteEvents.emit("EsetMode","Add",null)}}/>
       </div>
-            {!(this.state.workmode=="Show")&& <AddEditClient workmode={this.state.workmode} edited={this.state.edited} maxId={this.state.maxId} client={client}/>}
+            <AddEditClient workmode={this.state.workmode} edited={this.state.edited} maxId={this.state.maxId} client={client}/>
       </div>
 
     )

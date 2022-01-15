@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`работа фильтрации 1`] = `
+<div>
+  <input
+    id="all"
+    onClick={[Function]}
+    type="button"
+    value="Все"
+  />
+  <input
+    id="active"
+    onClick={[Function]}
+    type="button"
+    value="Активные"
+  />
+  <input
+    id="blocked"
+    onClick={[Function]}
+    type="button"
+    value="Заблокированные"
+  />
+</div>
+`;
+
+exports[`работа фильтрации 2`] = `
+<div>
+  <input
+    id="all"
+    onClick={[Function]}
+    type="button"
+    value="Все"
+  />
+  <input
+    id="active"
+    onClick={[Function]}
+    type="button"
+    value="Активные"
+  />
+  <input
+    id="blocked"
+    onClick={[Function]}
+    type="button"
+    value="Заблокированные"
+  />
+</div>
+`;
+
+exports[`работа фильтрации 3`] = `
+<div>
+  <input
+    id="all"
+    onClick={[Function]}
+    type="button"
+    value="Все"
+  />
+  <input
+    id="active"
+    onClick={[Function]}
+    type="button"
+    value="Активные"
+  />
+  <input
+    id="blocked"
+    onClick={[Function]}
+    type="button"
+    value="Заблокированные"
+  />
+</div>
+`;

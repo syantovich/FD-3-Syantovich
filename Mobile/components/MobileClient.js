@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import {voteEvents} from "./events";
 
-
+import "./MobileClient.css"
 
 class MobileClient extends React.PureComponent {
 
@@ -39,8 +39,8 @@ this.setState({status:(nextProps.client.balance<0)?"blocked":"active",})
         <td className='MobileClientFIO'>{this.props.client.otch}</td>
         <td className='MobileClientFIO'>{this.props.client.balance}</td>
         <td className={'MobileClientFIO '+this.state.status}>{this.state.status}</td>
-        <td className='MobileClientFIO'><input type="button" value="Edit" onClick={()=>{voteEvents.emit("EsetMode","Edit",this.props.client.id)}}/></td>
-        <td className='MobileClientFIO'><input type="button" value="Delete" onClick={()=>{voteEvents.emit("Edelete",this.props.client.id)}}/></td>
+        <td className='MobileClientFIO'><input type="button" value="Edit" className={"Edit"+this.props.client.id} onClick={()=>{voteEvents.emit("EsetMode","Edit",this.props.client.id)}}/></td>
+        <td className='MobileClientFIO'><input type="button" value="Delete" className={"Delete"+this.props.client.id} onClick={()=>{voteEvents.emit("Edelete",this.props.client.id)}}/></td>
       </tr>
         </tbody>
     );
