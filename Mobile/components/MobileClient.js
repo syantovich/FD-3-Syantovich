@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import {voteEvents} from "./events";
 
-import './MobileClient.css';
+
 
 class MobileClient extends React.PureComponent {
 
