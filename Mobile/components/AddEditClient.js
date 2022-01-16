@@ -44,16 +44,14 @@ let ret;
 if(this.props.workmode=="Show"){
     ret=<input type="button" value="Добавить клиента" id={"AddItem"} onClick={()=>{voteEvents.emit("EsetMode","Add",null)}}/>
 }else{
-    console.log(this.inId.current);
-    console.log(this.inId);
     ret=<div key={this.props.edited||this.props.maxId}>
-        id:<span ref={this.inId}>{this.props.edited||this.props.maxId}</span><br/>
+        id:<span ref={this.inId} id={"code"}>{this.props.edited||this.props.maxId}</span><br/>
         <label>Имя:<input type="text" defaultValue={(!!this.props.client)?this.props.client.im:""} ref={this.inName} id={'im'}/></label><br/>
         <label>Фамилия:<input type="text" defaultValue={(!!this.props.client)?this.props.client.fam:""} ref={this.inFam} id={"fam"}/></label><br/>
         <label>Отчество:<input type="text" defaultValue={(!!this.props.client)?this.props.client.otch:""} ref={this.inOtch} id={"otch"}/></label><br/>
         <label>Баланс:<input type="number" defaultValue={(!!this.props.client)?this.props.client.balance:0} ref={this.inBalance} id={"balance"}/></label><br/>
-        {(this.props.workmode=="Edit")&&<input type="button" value="Save" id={"SaveEdit"} onClick={()=>voteEvents.emit("Esave",parseInt(this.inId.current.value),this.inName.current.value,this.inFam.current.value,this.inOtch.current.value,parseInt(this.inBalance.current.value))}/>}
-        {(this.props.workmode=="Add")&&<input type="button" value="Add" id={"AddNew"} onClick={()=>voteEvents.emit("Eadd",parseInt(this.inId.current.value),this.inName.current.value,this.inFam.current.value,this.inOtch.current.value,parseInt(this.inBalance.current.value))}/>}
+        {(this.props.workmode=="Edit")&&<input type="button" value="Save" id={"SaveEdit"} onClick={(EO,id,im,fam,otch,balance)=>voteEvents.emit("Esave",id||parseInt(this.inId.current.value),im||this.inName.current.value,fam||this.inFam.current.value,otch||this.inOtch.current.value,balance||parseInt(this.inBalance.current.value))}/>}
+        {(this.props.workmode=="Add")&&<input type="button" value="Add" id={"AddNew"} onClick={(EO,id,im,fam,otch,balance)=>voteEvents.emit("Eadd",id||parseInt(this.inId.current.value),im||this.inName.current.value,fam||this.inFam.current.value,otch||this.inOtch.current.value,balance||parseInt(this.inBalance.current.value))}/>}
         <input type="button" value="Cancel" id={"Cancel"} onClick={()=>voteEvents.emit("EsetMode","Show",null)}/>
     </div>
 }
